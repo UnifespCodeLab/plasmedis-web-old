@@ -1,32 +1,37 @@
-# Qual é o comportamento esperado?
-<!-- Descreva o que deveria acontecer. -->
+# Contexto
+<!-- Informe referências para issues ou outros PRs que motivaram as mudanças introduzidas aqui. -->
+<!-- Para criar uma referência, digite "#" seguido pelo numero da issue/pr. (#121, por exemplo) -->
 
+# Checklist:
+
+- [ ] Eu fiz uma auto-revisão do meu código
+- [ ] Eu comentei meu código, particularmente em seções complexas
+- [ ] Eu atualizei a documentação de acordo
+- [ ] Minhas alterações não geraram novos erros
 
 # Qual é o comportamento atual?
-<!-- Descreva o comportamento atual. Informe mensagens de log se relevantes, assim como gravações de tela. -->
-
-<!-- Especialmente em casos de erros, descrever detalhadamente os passos que você seguiu para chegar no comportamento incorreto. Caso os passos para a reprodução do erro sejam mais do que 2 ou 3, use algum **programa para gravar a tela como um GIF** ([Peek](https://www.edivaldobrito.com.br/peek-animated-gif-recorder-no-linux/) para Linux ou [GIF Screen Recorder](http://gifrecorder.com/) no Windows). -->
+<!-- Descreva brevemente o comportamento atual do código. -->
 
 
-# Estou vendo esse comportamento em
-<!-- As caixas podem ser marcadas com um: [x] -->
+# Qual é o novo comportamento?
+<!-- Descreva as mudanças introduzidas por esse PR. -->
 
-- [ ] iOS
-- [ ] Android
-- [ ] Desktop *(informar a resolução)*
-- [ ] ...
+-
+-
+-
+
+# Essa PR introduz alguma imcompatibilidade?
+<!-- Se essa PR introduz uma mudança grande o suficiente para gerar incompatibilidade com algum outro projeto ou serviço, descreva o impacto e possíveis caminhos para a correção dessas imcompatibilidades. -->
+<!-- Exemplo: uma atualização na api pode modificar um nome de endpoint, o que introduziria uma imcompatibilidade no projeto do front, gerando a necessidade de um bugfix. -->
+
+- [ ] Yes
+- [ ] No
 
 
-## Versão do OS
-<!-- Exemplo: Android 4.4.2, Celular -->
-<!-- Exemplo: iOS 9.2, iPad -->
-<!-- Exemplo: Firefox 92.0, Linux -->
-<!-- Exemplo: Google Chrome 70.0, Windows 10 -->
-
-
-# Como eu posso reproduzir isso?
-<!-- Informar os passos que você seguiu para que outros possam reproduzir o comportamento observado. Caso **gravações de tela** não tenham sido informadas acima, aqui é uma boa hora. Especificações de trechos de código ou seções do banco seriam úteis, mas não são obrigatórias. Pelo amor de todos os deuses, por favor grave a sua tela se possível. Eu não poderia descrever em palavras o quanto isso ajuda na hora de entender como um erro aconteceu. -->
+# Como foi testado?
+<!-- Descreva um breve processo de teste para verificação das mudanças. -->
+<!-- Caso as instruções sejam mais do que 2 ou 3 passos, use algum **programa para gravar a tela como um GIF** ([Peek](https://www.edivaldobrito.com.br/peek-animated-gif-recorder-no-linux/) para Linux ou [GIF Screen Recorder](http://gifrecorder.com/) no Windows).  -->
 
 
 # Informações Adicionais
-<!-- Qualquer comentário adicional sobre a issue que você ache relevante informar. -->
+<!-- Qualquer outra informação relevante ao PR, como screenshots de como os componentes eram antes e depois das mudanças. -->
