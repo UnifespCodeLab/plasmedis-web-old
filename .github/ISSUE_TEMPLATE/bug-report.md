@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Modelo de Issue para bugs
+about: Modelo de Issue para relatos de erro
 title: ''
 labels: 'type: bug, type: specification'
 assignees: ''
