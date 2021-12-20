@@ -27,12 +27,15 @@ assignees: ''
 - Desktop *(informar a resolução)*
 - ...
 
+<!-- http://whatismyscreenresolution.net/ -->
 
 ## Versão do OS
 <!-- Exemplo: Android 4.4.2, Celular -->
 <!-- Exemplo: iOS 9.2, iPad -->
 <!-- Exemplo: Firefox 92.0, Linux -->
 <!-- Exemplo: Google Chrome 70.0, Windows 10 -->
+
+<!-- https://www.whatismybrowser.com/detect/what-version-of-chrome-do-i-have -->
 
 
 # Como eu posso reproduzir isso?
