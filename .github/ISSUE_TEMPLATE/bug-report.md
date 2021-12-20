@@ -18,12 +18,14 @@ assignees: ''
 
 
 # Estou vendo esse comportamento em
-<!-- As caixas podem ser marcadas com um: [x] -->
+<!-- Mantenha as linhas com os aparelhos onde esse comportamento está presente -->
 
-- [ ] iOS
-- [ ] Android
-- [ ] Desktop *(informar a resolução)*
-- [ ] ...
+- iOS
+- Android
+- iPad
+- Galaxy Tab
+- Desktop *(informar a resolução)*
+- ...
 
 
 ## Versão do OS
