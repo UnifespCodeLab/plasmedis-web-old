@@ -66,6 +66,10 @@ const Postagem = ({
     [fetchComments, numberOfComments],
   );
 
+  const deletePost = (idPost) => {
+    console.log(idPost);
+  };
+
   // se comments está nulo (ainda não houve um fetch com sucesso da api)
   useEffect(() => {
     if (openComments && item?.id && comments === null)
@@ -118,7 +122,9 @@ const Postagem = ({
                 </Text>
               </Stack>
             </Flex>
-            {user.id === item.author.id ? <FiTrash /> : null}
+            {user.id === item.author.id ? (
+              <FiTrash onClick={() => deletePost(item.id)} />
+            ) : null}
           </Flex>
           <Stack>
             <Flex mb={2} flexDirection="row" align="center">
