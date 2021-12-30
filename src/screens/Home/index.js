@@ -192,7 +192,7 @@ function Home() {
         </Box>
 
         <Feed
-          user={user.name}
+          user={user}
           avatar={get(user, 'avatar', null)}
           canVerifyPost={canVerifyPostTypeIds.includes(user.userType)}
           fetchComments={async (id) => {
