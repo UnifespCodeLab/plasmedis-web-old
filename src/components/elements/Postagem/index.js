@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {Stack, Box, Text, Flex} from '@chakra-ui/layout';
 import {Avatar} from '@chakra-ui/avatar';
+import {FiTrash} from 'react-icons/fi/';
 import {
   IconButton,
   Input,
@@ -100,21 +101,24 @@ const Postagem = ({
         shadow="md"
         bgColor="white">
         <Stack width="100%">
-          <Flex mb={4} flexDirection="row" align="center">
-            <Box mr={4}>
-              <Avatar
-                name={get(item, 'author.name')}
-                src={get(item, 'author.avatar')}
-              />
-            </Box>
-            <Stack spacing={{base: 0, lg: 1}}>
-              <Text fontWeight="bold" fontSize="sm" color="black">
-                {get(item, 'author.name')}
-              </Text>
-              <Text fontSize="xs" color="gray">
-                {item.dateTime.fromNow()}
-              </Text>
-            </Stack>
+          <Flex mb={4} direction="row" justify="space-between">
+            <Flex>
+              <Box mr={4}>
+                <Avatar
+                  name={get(item, 'author.name')}
+                  src={get(item, 'author.avatar')}
+                />
+              </Box>
+              <Stack spacing={{base: 0, lg: 1}}>
+                <Text fontWeight="bold" fontSize="sm" color="black">
+                  {get(item, 'author.name')}
+                </Text>
+                <Text fontSize="xs" color="gray">
+                  {item.dateTime.fromNow()}
+                </Text>
+              </Stack>
+            </Flex>
+            {user.id === item.author.id ? <FiTrash /> : null}
           </Flex>
           <Stack>
             <Flex mb={2} flexDirection="row" align="center">
@@ -258,6 +262,10 @@ Postagem.defaultProps = {
 Postagem.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number,
+    author: PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string.isRequired,
+    }),
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     category: {
@@ -268,7 +276,7 @@ Postagem.propTypes = {
     comments: PropTypes.arrayOf(PropTypes.shape({})),
     verified: PropTypes.bool,
   }),
-  user: PropTypes.string,
+  user: PropTypes.object,
   avatar: PropTypes.string,
   verifiable: PropTypes.bool,
   fetchComments: PropTypes.func,
