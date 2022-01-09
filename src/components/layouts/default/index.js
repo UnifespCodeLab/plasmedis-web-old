@@ -34,7 +34,7 @@ const Default = ({children} = {}) => {
                   align="flex-start"
                   justify="center"
                   direction="column">
-                  <Navigation />
+                  <Navigation user={user} />
                 </Stack>
               </Box>
             </Box>
@@ -45,7 +45,7 @@ const Default = ({children} = {}) => {
             <Sidebar
               name={get(user, 'name', '???')}
               avatar={get(user, 'avatar', 'https://bit.ly/dan-abramov')}>
-              <Navigation />
+              <Navigation user={user} />
             </Sidebar>
           </BoxAside>
           <Box width="100%">{children}</Box>
