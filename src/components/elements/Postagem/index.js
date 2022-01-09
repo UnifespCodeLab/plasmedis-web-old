@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import PropTypes from 'prop-types';
-
+import {Anchorme} from 'react-anchorme';
 import {Stack, Box, Text, Flex} from '@chakra-ui/layout';
 import {Avatar} from '@chakra-ui/avatar';
 import {
@@ -22,6 +22,7 @@ import {Button} from '@chakra-ui/button';
 import Icon from '@chakra-ui/icon';
 
 import {get} from 'lodash';
+import {TextAnchor} from './styles';
 
 import Comentario from '../Comentario';
 
@@ -146,9 +147,11 @@ const Postagem = ({
                 />
               )}
             </Flex>
-            <Text size="sm" color="black" align="justify">
-              {item.description}
-            </Text>
+            <TextAnchor size="sm" color="black" align="justify">
+              <Anchorme target="_blank" rel="noreferrer noopener">
+                {item.description}
+              </Anchorme>
+            </TextAnchor>
             <Text
               cursor="pointer"
               fontStyle={openComments ? 'italic' : ''}
