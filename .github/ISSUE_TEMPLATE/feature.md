@@ -13,7 +13,7 @@ assignees: ''
 # Resumo
 <!-- Descreva como a funcionalidade deve ser implementada. -->
 
-## Critérios de Aceite
+# Critérios de Aceite
 <!-- Liste os critérios que devem ser cumpridos para que essa feature seja considerada como completa. -->
 
 - [ ] Criar a tela X
