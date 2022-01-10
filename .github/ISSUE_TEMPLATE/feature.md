@@ -1,7 +1,7 @@
 ---
 name: Feature
 about: Modelo de Issue para especificação de novas features
-title: ''
+title: '[Nome do Épico] Nome da Feature'
 labels: 'type: feature, type: specification'
 assignees: ''
 
