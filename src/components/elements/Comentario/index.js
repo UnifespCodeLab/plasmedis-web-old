@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import {Anchorme} from 'react-anchorme';
 import {Stack, Box, Text, Flex} from '@chakra-ui/layout';
 import {Avatar} from '@chakra-ui/avatar';
+import {TextAnchor} from './styles.js';
 
 const Comentario = ({item} = {}) => {
   return (
@@ -20,9 +21,11 @@ const Comentario = ({item} = {}) => {
           </Text>
         </Stack>
 
-        <Text fontSize="sm" color="black" align="justify">
-          {item.body}
-        </Text>
+        <TextAnchor size="sm" color="black" align="justify">
+          <Anchorme target="_blank" rel="noreferrer noopener">
+            {item.body}
+          </Anchorme>
+        </TextAnchor>
       </Box>
     </Flex>
   );
