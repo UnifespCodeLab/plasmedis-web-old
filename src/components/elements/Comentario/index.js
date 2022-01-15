@@ -10,10 +10,9 @@ const Comentario = ({item} = {}) => {
   const {user} = useContext(AuthContext);
 
   const deleteComment = (commentId) => {
-    console.log(commentId);
+    console.log('Teste', commentId);
   };
 
-  debugger;
   return (
     <Flex flexDirection="row" align="flex-start">
       <Box mr={{base: 2, lg: 3}}>
@@ -28,7 +27,7 @@ const Comentario = ({item} = {}) => {
             </Text>
           </Text>
           {user.id === item.author.id ? (
-            <FiTrash size={15} onClick={() => deleteComment()} />
+            <FiTrash size={15} onClick={() => deleteComment(item.id)} />
           ) : (
             <></>
           )}
@@ -53,6 +52,7 @@ Comentario.propTypes = {
       name: PropTypes.string,
       avatar: PropTypes.string,
     },
+    id: PropTypes.number,
     post: PropTypes.string,
     dateTime: PropTypes.object.isRequired, // TODO: invoke moment object type
     body: PropTypes.string,
