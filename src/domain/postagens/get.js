@@ -39,7 +39,7 @@ export default async function (token, id) {
     dateTime: moment(`${get(post, 'data.data')}Z`),
     verified: get(post, 'data.selo'),
     comments: get(post, 'data.comentarios', []).map((comentario) => ({
-      id: '<API NÃO ESTÁ ENVIANDO>',
+      id: comentario.id,
       author: {
         id: get(comentario, 'criador.id'),
         name: get(comentario, 'criador.name'),
