@@ -66,6 +66,17 @@ const Postagem = ({
     [fetchComments, numberOfComments],
   );
 
+  const checkIfUserCanDeletePost = () => {
+    if (
+      user.id === item.author.id ||
+      user.userType === 1 ||
+      user.userType === 2
+    ) {
+      return true;
+    }
+    return false;
+  };
+
   const deletePost = (idPost) => {
     console.log(idPost);
   };
@@ -122,7 +133,7 @@ const Postagem = ({
                 </Text>
               </Stack>
             </Flex>
-            {user.id === item.author.id ? (
+            {checkIfUserCanDeletePost() ? (
               <FiTrash onClick={() => deletePost(item.id)} />
             ) : null}
           </Flex>
