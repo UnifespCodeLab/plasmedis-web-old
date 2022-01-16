@@ -9,6 +9,18 @@ import {Context as AuthContext} from '../../stores/Auth';
 const Comentario = ({item} = {}) => {
   const {user} = useContext(AuthContext);
 
+  const checkIfIsAbleToDelete = () => {
+    if (
+      user.id === item.author.id ||
+      user.userType === 1 ||
+      user.userType === 2
+    ) {
+      return true;
+    }
+
+    return false;
+  };
+
   const deleteComment = (commentId) => {
     console.log('Teste', commentId);
   };
@@ -26,7 +38,7 @@ const Comentario = ({item} = {}) => {
               {item.dateTime.fromNow()}
             </Text>
           </Text>
-          {user.id === item.author.id ? (
+          {checkIfIsAbleToDelete() ? (
             <FiTrash size={15} onClick={() => deleteComment(item.id)} />
           ) : (
             <></>
