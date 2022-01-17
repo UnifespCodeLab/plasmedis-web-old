@@ -11,7 +11,7 @@ export default async function create(token, newPostagem, currentUserId) {
     texto: description,
     criador: currentUserId,
     titulo: title,
-    categoria: category,
+    categoria: category || 0,
   };
 
   try {

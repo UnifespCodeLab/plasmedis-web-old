@@ -41,7 +41,7 @@ const EditablePostagem = ({value} = {}) => {
             onChange={(event) => {
               value.category = event.target.value;
             }}>
-            <option hidden selected>
+            <option selected value={0}>
               Sem Categoria
             </option>
             <option value={1}>Saúde</option>
