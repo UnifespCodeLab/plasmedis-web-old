@@ -23,7 +23,7 @@ const Comentario = ({item} = {}) => {
 
         <TextAnchor size="sm" color="black" align="justify">
           <Anchorme target="_blank" rel="noreferrer noopener">
-            {item.body}
+            {item.description}
           </Anchorme>
         </TextAnchor>
       </Box>

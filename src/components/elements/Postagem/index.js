@@ -208,7 +208,7 @@ const Postagem = ({
                 </Flex>
                 <Stack spacing={4}>
                   {loadingComments && (
-                    <Box w="150%" textAlign="center">
+                    <Box w="100%" textAlign="center">
                       <Spinner colorScheme="primary.main" />
                     </Box>
                   )}
