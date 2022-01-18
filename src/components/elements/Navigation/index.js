@@ -7,6 +7,7 @@ import {
   mdiLogout,
   mdiAccountPlus,
   mdiAccountSupervisor,
+  mdiApplicationCog,
 } from '@mdi/js';
 import {Box} from '@chakra-ui/layout';
 import {useLocation} from 'react-router-dom';
@@ -50,6 +51,12 @@ const informationSection = [
     title: 'Cadastrar Novo Usuário',
     icon: mdiAccountPlus,
     to: '/register',
+    user_type_alowed: [1, 2],
+  },
+  {
+    title: 'Gerenciar Categorias',
+    icon: mdiApplicationCog,
+    to: '/categorias',
     user_type_alowed: [1, 2],
   },
 ];
@@ -117,7 +124,9 @@ const Navigation = ({user}) => {
 
 Navigation.displayName = 'Navigation';
 Navigation.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.shape({
+    userType: PropTypes.number,
+  }).isRequired,
 };
 
 export default Navigation;

@@ -1,8 +1,6 @@
 import React from 'react';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 
-import PropTypes from 'prop-types';
-
 import PrivateRoute from './PrivateRoute';
 
 import Entrar from '../screens/Entrar';
@@ -13,6 +11,7 @@ import RegisterUser from '../screens/RegisterUser';
 import Logout from '../screens/Logout';
 import RecoverPassword from '../screens/RecoverPassword';
 import UserControll from '../screens/Admin/UserControll';
+import Categories from '../screens/Categories';
 
 function Routes() {
   return (
@@ -24,6 +23,7 @@ function Routes() {
         <PrivateRoute path="/form" component={Form} />
         <PrivateRoute path="/complemento-de-dados" component={AdditionalData} />
         <PrivateRoute path="/register" component={RegisterUser} />
+        <PrivateRoute path="/categorias" component={Categories} />
         <PrivateRoute path="/logout" component={Logout} />
         <PrivateRoute
           exact
