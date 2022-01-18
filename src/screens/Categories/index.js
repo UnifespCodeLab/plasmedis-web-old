@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 
 import {Icon} from '@mdi/react';
 import {Box} from '@chakra-ui/layout';
@@ -19,8 +19,17 @@ import * as Categorias from '../../domain/categorias';
 import {Context as AuthContext} from '../../components/stores/Auth';
 
 function Categories() {
-  const {token} = useContext(AuthContext);
+  const {user, token} = useContext(AuthContext);
   const [categories, setCategories] = useState(null);
+  const history = useHistory();
+
+  useEffect(() => {
+    const canEditCategoriesTypeIds = [1, 2];
+
+    if (!canEditCategoriesTypeIds.includes(user.userType)) {
+      history.push('/');
+    }
+  }, []);
 
   useEffect(() => {
     const fetchCategories = async () => {
