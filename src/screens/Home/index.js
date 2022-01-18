@@ -1,4 +1,6 @@
 import React, {useRef, useState, useEffect, useContext} from 'react';
+import {useLocation, useHistory} from 'react-router-dom';
+
 import {
   Tabs,
   TabList,
@@ -34,6 +36,12 @@ import * as Bairros from '../../domain/bairros';
 import * as Comentarios from '../../domain/comentarios';
 
 function Home() {
+  const history = useHistory();
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+
+  const filteredCategory = params.get('categoria');
+
   const tabs = useBreakpointValue(
     {
       base: ['Feed', 'Recomendados', 'Saúde', 'Trocas', 'Cultura e Lazer'],
@@ -50,7 +58,7 @@ function Home() {
   const neighborhoods = useRef(null);
 
   const [posts, setPosts] = useState(null);
-  const [newPostagem, setNewPostagem] = useState({});
+  const [newPostagem] = useState({});
 
   // 1 = Admin
   // 2 = Moderador
@@ -74,21 +82,32 @@ function Home() {
 
     const fetchPosts = async () => {
       setPosts(null);
+
+      let index = tab;
+
+      if (filteredCategory) {
+        const selectedTabIndex = tabs.indexOf(filteredCategory);
+        if (selectedTabIndex !== -1) {
+          index = selectedTabIndex;
+          setTab(selectedTabIndex);
+        }
+      }
+
       let result = [];
-      if (tab === 0 || tab === 1)
+      if (index === 0 || index === 1)
         result = await Postagens.getAll(token, {recommended: tab === 1});
       else {
         // FUTURE: como qualquer discussão de adição de novas categorias é pra próxima "sprint", no momento vai ficar meio hardcoded assim
         result = await Postagens.getAll(token, {
           category:
-            (await categories.current).find((c) => c.name === tabs[tab])?.id ??
-            null,
+            (await categories.current).find((c) => c.name === tabs[index])
+              ?.id ?? null,
         });
       }
 
       if (isNull(result)) return;
 
-      const [allCategories, allNeighborhoods, allComments] = await Promise.all([
+      const [allCategories, allNeighborhoods] = await Promise.all([
         categories.current,
         neighborhoods.current,
       ]);
@@ -123,7 +142,10 @@ function Home() {
           isManual
           variant="unstyled"
           index={tab}
-          onChange={(value) => setTab(value)}
+          onChange={(value) => {
+            setTab(value);
+            history.push(`?categoria=${tabs[value]}`);
+          }}
           gridRow={{base: 1, lg: 2}}
           my={{base: 0, lg: 4}}>
           <TabList
