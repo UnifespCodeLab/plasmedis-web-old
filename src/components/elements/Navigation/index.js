@@ -6,6 +6,7 @@ import {
   mdiAccountBoxMultipleOutline,
   mdiLogout,
   mdiAccountPlus,
+  mdiAccountSupervisor,
 } from '@mdi/js';
 import {Box} from '@chakra-ui/layout';
 import {useLocation} from 'react-router-dom';
@@ -20,6 +21,15 @@ const essentialsSection = [
     icon: mdiHome,
     to: '/',
     user_type_alowed: [1, 2, 3],
+  },
+];
+
+const adminSection = [
+  {
+    title: 'Controle de usuários',
+    icon: mdiAccountSupervisor,
+    to: '/admin/controle-de-usuarios',
+    user_type_alowed: [1, 2],
   },
 ];
 
@@ -60,11 +70,13 @@ const Navigation = ({user}) => {
       base: [
         essentialsSection,
         // categoriesSection,
+        adminSection,
         informationSection,
         logoutSection,
       ],
       lg: [
         essentialsSection,
+        adminSection,
         // categoriesSection,
         informationSection,
         logoutSection,
