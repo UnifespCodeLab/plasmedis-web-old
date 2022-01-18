@@ -12,6 +12,7 @@ import AdditionalData from '../screens/AdditionalData';
 import RegisterUser from '../screens/RegisterUser';
 import Logout from '../screens/Logout';
 import RecoverPassword from '../screens/RecoverPassword';
+import UserControll from '../screens/Admin/UserControll';
 
 function Routes() {
   return (
@@ -24,6 +25,11 @@ function Routes() {
         <PrivateRoute path="/complemento-de-dados" component={AdditionalData} />
         <PrivateRoute path="/register" component={RegisterUser} />
         <PrivateRoute path="/logout" component={Logout} />
+        <PrivateRoute
+          exact
+          path="/admin/controle-de-usuarios"
+          component={UserControll}
+        />
         <PrivateRoute path="/:category" />
       </Switch>
     </BrowserRouter>
