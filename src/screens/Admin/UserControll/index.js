@@ -7,17 +7,15 @@ import {
   Td,
   Tbody,
   Thead,
-  Icon,
   IconButton,
 } from '@chakra-ui/react';
-import {mdiDeleteOutline} from '@mdi/js';
 import {FiTrash} from 'react-icons/fi';
 import * as S from './styles';
 import {getAll} from '../../../domain/usuarios';
 import {Context as AuthContext} from '../../../components/stores/Auth';
 
 const UserControll = () => {
-  const {userContext, token} = useContext(AuthContext);
+  const {token} = useContext(AuthContext);
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
