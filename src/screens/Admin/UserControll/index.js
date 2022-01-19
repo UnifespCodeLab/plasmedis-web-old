@@ -1,18 +1,34 @@
-import React, {useContext} from 'react';
-import {Box, Stack} from '@chakra-ui/react';
+import React, {useContext, useState, useEffect} from 'react';
+import {
+  Box,
+  Table,
+  Tr,
+  Th,
+  Td,
+  Tbody,
+  Thead,
+  Icon,
+  IconButton,
+} from '@chakra-ui/react';
+import {mdiDeleteOutline} from '@mdi/js';
+import {FiTrash} from 'react-icons/fi';
 import * as S from './styles';
 import {getAll} from '../../../domain/usuarios';
 import {Context as AuthContext} from '../../../components/stores/Auth';
 
 const UserControll = () => {
-  const {user, token} = useContext(AuthContext);
-  const getAllUsersFromApi = async () => {
-    debugger;
-    const users = await getAll(token);
-    console.log(users);
-  };
+  const {userContext, token} = useContext(AuthContext);
+  const [users, setUsers] = useState(null);
 
-  getAllUsersFromApi();
+  useEffect(() => {
+    const getAllUsersFromApi = async () => {
+      debugger;
+      const response = await getAll(token);
+      setUsers(response.users);
+    };
+
+    getAllUsersFromApi();
+  }, []);
 
   return (
     <S.Wrapper px={{base: 0, lg: 4}}>
@@ -24,14 +40,38 @@ const UserControll = () => {
         bg={{base: 'white', lg: 'white'}}
         color={{base: 'white', lg: 'white'}}
         boxShadow="0px 0.25rem 0.25rem 0px rgba(0, 0, 0, 0.25)">
-        <Stack
-          mx={12}
-          my={10}
-          spacing={4}
-          align="flex-start"
-          justify="center"
-          direction="column"
-        />
+        <Table variant="striped" color="black" colorScheme="blackAlpha">
+          <Thead>
+            <Tr bg="primary.600">
+              <Th color="white">ID</Th>
+              <Th color="white">Nome</Th>
+              <Th color="white">Email</Th>
+              <Th color="white">Privilégio</Th>
+              <Th color="white">Ações</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {users &&
+              users.map((user) => (
+                <Tr key={user.id}>
+                  <Td>{user.id}</Td>
+                  <Td>{user.user_name}</Td>
+                  <Td>{user.email}</Td>
+                  <Td>{user.privilegio}</Td>
+                  <Td>
+                    <IconButton
+                      aria-label="Deletar usuário"
+                      title="Deletar usuário"
+                      cursor="pointer"
+                      size={1}
+                      icon={<FiTrash />}
+                      variant="ghost"
+                    />
+                  </Td>
+                </Tr>
+              ))}
+          </Tbody>
+        </Table>
       </Box>
     </S.Wrapper>
   );
