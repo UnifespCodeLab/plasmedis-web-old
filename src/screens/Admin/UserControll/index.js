@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import {FiTrash} from 'react-icons/fi';
 import * as S from './styles';
-import {getAll} from '../../../domain/usuarios';
+import {getAll, deleteById} from '../../../domain/usuarios';
 import {Context as AuthContext} from '../../../components/stores/Auth';
 
 const UserControll = () => {
@@ -27,6 +27,10 @@ const UserControll = () => {
 
     getAllUsersFromApi();
   }, []);
+
+  const deleteUser = async (id) => {
+    await deleteById(token, id);
+  };
 
   return (
     <S.Wrapper px={{base: 0, lg: 4}}>
@@ -61,6 +65,7 @@ const UserControll = () => {
                       aria-label="Deletar usuário"
                       title="Deletar usuário"
                       cursor="pointer"
+                      onClick={() => deleteUser(user.id)}
                       size={1}
                       icon={<FiTrash />}
                       variant="ghost"
