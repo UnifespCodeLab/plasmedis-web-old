@@ -6,11 +6,15 @@ export default async function getById(token, userId) {
     throw new Error('Token não foi informado');
 
   try {
-    const response = await api.post(`inactivate_users/${userId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const response = await api.post(
+      `inactivate_users/${userId}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
     return response.data;
   } catch (e) {
     // eslint-disable-next-line no-alert
