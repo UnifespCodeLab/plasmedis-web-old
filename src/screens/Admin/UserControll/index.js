@@ -1,17 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {
-  Box,
-  Table,
-  Tr,
-  Th,
-  Td,
-  Tbody,
-  Thead,
-  IconButton,
-  Select,
-  Stack,
-} from '@chakra-ui/react';
-import {FiTrash} from 'react-icons/fi';
+import {Box, Table, Tr, Th, Td, Tbody, Thead, Select} from '@chakra-ui/react';
 import {useHistory} from 'react-router-dom';
 import * as S from './styles';
 import {getAll, inactivateById, activateById} from '../../../domain/usuarios';
