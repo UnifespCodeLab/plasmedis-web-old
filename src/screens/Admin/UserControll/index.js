@@ -8,6 +8,8 @@ import {
   Tbody,
   Thead,
   IconButton,
+  Select,
+  Stack,
 } from '@chakra-ui/react';
 import {FiTrash} from 'react-icons/fi';
 import * as S from './styles';
@@ -61,7 +63,17 @@ const UserControll = () => {
                   <Td>{user.user_name}</Td>
                   <Td>{user.email}</Td>
                   <Td>{user.privilegio}</Td>
-                  <Td>{user.is_active ? 'Ativo' : 'Inativo'}</Td>
+                  <Td>
+                    <Select
+                      size="50px"
+                      placeholder={user.is_active ? 'Ativo' : 'Inativo'}>
+                      {user.is_active ? (
+                        <option value="Inativo">Inativo</option>
+                      ) : (
+                        <option value="Ativo">Ativo</option>
+                      )}
+                    </Select>
+                  </Td>
                   <Td>
                     <IconButton
                       aria-label="Inativar usuário"
