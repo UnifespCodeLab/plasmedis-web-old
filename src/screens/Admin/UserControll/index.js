@@ -12,12 +12,14 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import {FiTrash} from 'react-icons/fi';
+import {useHistory} from 'react-router-dom';
 import * as S from './styles';
-import {getAll, inactivateById} from '../../../domain/usuarios';
+import {getAll, inactivateById, activateById} from '../../../domain/usuarios';
 import {Context as AuthContext} from '../../../components/stores/Auth';
 
 const UserControll = () => {
-  const {token} = useContext(AuthContext);
+  const {user, token} = useContext(AuthContext);
+  const history = useHistory();
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
@@ -30,8 +32,29 @@ const UserControll = () => {
     getAllUsersFromApi();
   }, []);
 
-  const deleteUser = async (id) => {
-    await inactivateById(token, id);
+  useEffect(() => {
+    const canEditUsers = [1, 2];
+
+    if (!canEditUsers.includes(user.userType)) {
+      history.push('/');
+    }
+  }, []);
+
+  const updateUserStatus = async (target, userId) => {
+    debugger;
+    switch (target.value) {
+      case 'ativar':
+        await activateById(token, userId);
+        break;
+
+      case 'inativar':
+        await inactivateById(token, userId);
+        break;
+
+      default:
+        break;
+    }
+    // await inactivateById(token, target);
   };
 
   return (
@@ -52,38 +75,31 @@ const UserControll = () => {
               <Th color="white">Email</Th>
               <Th color="white">Privilégio</Th>
               <Th color="white">Situação</Th>
-              <Th color="white">Ações</Th>
             </Tr>
           </Thead>
           <Tbody>
             {users &&
-              users.map((user) => (
-                <Tr key={user.id}>
-                  <Td>{user.id}</Td>
-                  <Td>{user.user_name}</Td>
-                  <Td>{user.email}</Td>
-                  <Td>{user.privilegio}</Td>
+              users.map((currentUser) => (
+                <Tr key={currentUser.id}>
+                  <Td>{currentUser.id}</Td>
+                  <Td>{currentUser.user_name}</Td>
+                  <Td>{currentUser.email}</Td>
+                  <Td>{currentUser.privilegio}</Td>
                   <Td>
                     <Select
-                      size="50px"
-                      placeholder={user.is_active ? 'Ativo' : 'Inativo'}>
-                      {user.is_active ? (
-                        <option value="Inativo">Inativo</option>
-                      ) : (
-                        <option value="Ativo">Ativo</option>
-                      )}
+                      onChange={(e) =>
+                        updateUserStatus(e.target, currentUser.id)
+                      }
+                      size="sm">
+                      <option
+                        selected={!currentUser.is_active}
+                        value="inativar">
+                        Inativo
+                      </option>
+                      <option selected={currentUser.is_active} value="ativar">
+                        Ativo
+                      </option>
                     </Select>
-                  </Td>
-                  <Td>
-                    <IconButton
-                      aria-label="Inativar usuário"
-                      title="Inativar usuário"
-                      cursor="pointer"
-                      onClick={() => deleteUser(user.id)}
-                      size={1}
-                      icon={<FiTrash />}
-                      variant="ghost"
-                    />
                   </Td>
                 </Tr>
               ))}
