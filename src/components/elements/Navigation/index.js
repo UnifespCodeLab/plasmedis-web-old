@@ -32,6 +32,12 @@ const adminSection = [
     to: '/admin/controle-de-usuarios',
     user_type_alowed: [1, 2],
   },
+  {
+    title: 'Gerenciar Categorias',
+    icon: mdiApplicationCog,
+    to: '/categorias',
+    user_type_alowed: [1, 2],
+  },
 ];
 
 const informationSection = [
@@ -51,12 +57,6 @@ const informationSection = [
     title: 'Cadastrar Novo Usuário',
     icon: mdiAccountPlus,
     to: '/register',
-    user_type_alowed: [1, 2],
-  },
-  {
-    title: 'Gerenciar Categorias',
-    icon: mdiApplicationCog,
-    to: '/categorias',
     user_type_alowed: [1, 2],
   },
 ];
