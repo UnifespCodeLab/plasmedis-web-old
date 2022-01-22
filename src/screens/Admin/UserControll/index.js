@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import {FiTrash} from 'react-icons/fi';
 import * as S from './styles';
-import {getAll, deleteById} from '../../../domain/usuarios';
+import {getAll, inactivateById} from '../../../domain/usuarios';
 import {Context as AuthContext} from '../../../components/stores/Auth';
 
 const UserControll = () => {
@@ -29,7 +29,7 @@ const UserControll = () => {
   }, []);
 
   const deleteUser = async (id) => {
-    await deleteById(token, id);
+    await inactivateById(token, id);
   };
 
   return (
@@ -49,6 +49,7 @@ const UserControll = () => {
               <Th color="white">Nome</Th>
               <Th color="white">Email</Th>
               <Th color="white">Privilégio</Th>
+              <Th color="white">Situação</Th>
               <Th color="white">Ações</Th>
             </Tr>
           </Thead>
@@ -60,10 +61,11 @@ const UserControll = () => {
                   <Td>{user.user_name}</Td>
                   <Td>{user.email}</Td>
                   <Td>{user.privilegio}</Td>
+                  <Td>{user.is_active ? 'Ativo' : 'Inativo'}</Td>
                   <Td>
                     <IconButton
-                      aria-label="Deletar usuário"
-                      title="Deletar usuário"
+                      aria-label="Inativar usuário"
+                      title="Inativar usuário"
                       cursor="pointer"
                       onClick={() => deleteUser(user.id)}
                       size={1}
