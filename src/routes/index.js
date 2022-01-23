@@ -10,6 +10,7 @@ import AdditionalData from '../screens/AdditionalData';
 import RegisterUser from '../screens/RegisterUser';
 import Logout from '../screens/Logout';
 import RecoverPassword from '../screens/RecoverPassword';
+import UserControll from '../screens/Admin/UserControll';
 import Categories from '../screens/Categories';
 
 function Routes() {
@@ -24,6 +25,12 @@ function Routes() {
         <PrivateRoute path="/register" component={RegisterUser} />
         <PrivateRoute path="/categorias" component={Categories} />
         <PrivateRoute path="/logout" component={Logout} />
+        <PrivateRoute
+          exact
+          path="/admin/controle-de-usuarios"
+          component={UserControll}
+        />
+        <PrivateRoute path="/:category" />
       </Switch>
     </BrowserRouter>
   );

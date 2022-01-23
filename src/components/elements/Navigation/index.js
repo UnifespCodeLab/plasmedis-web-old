@@ -6,6 +6,7 @@ import {
   mdiAccountBoxMultipleOutline,
   mdiLogout,
   mdiAccountPlus,
+  mdiAccountSupervisor,
   mdiApplicationCog,
 } from '@mdi/js';
 import {Box} from '@chakra-ui/layout';
@@ -21,6 +22,21 @@ const essentialsSection = [
     icon: mdiHome,
     to: '/',
     user_type_alowed: [1, 2, 3],
+  },
+];
+
+const adminSection = [
+  {
+    title: 'Controle de usuários',
+    icon: mdiAccountSupervisor,
+    to: '/admin/controle-de-usuarios',
+    user_type_alowed: [1, 2],
+  },
+  {
+    title: 'Gerenciar Categorias',
+    icon: mdiApplicationCog,
+    to: '/categorias',
+    user_type_alowed: [1, 2],
   },
 ];
 
@@ -43,12 +59,6 @@ const informationSection = [
     to: '/register',
     user_type_alowed: [1, 2],
   },
-  {
-    title: 'Gerenciar Categorias',
-    icon: mdiApplicationCog,
-    to: '/categorias',
-    user_type_alowed: [1, 2],
-  },
 ];
 
 const logoutSection = [
@@ -64,8 +74,20 @@ const Navigation = ({user}) => {
   const location = useLocation();
   const sidebarSections = useBreakpointValue(
     {
-      base: [essentialsSection, informationSection, logoutSection],
-      lg: [essentialsSection, informationSection, logoutSection],
+      base: [
+        essentialsSection,
+        // categoriesSection,
+        adminSection,
+        informationSection,
+        logoutSection,
+      ],
+      lg: [
+        essentialsSection,
+        adminSection,
+        // categoriesSection,
+        informationSection,
+        logoutSection,
+      ],
     },
     'base',
   );
