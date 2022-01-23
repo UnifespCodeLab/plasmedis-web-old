@@ -43,7 +43,7 @@ export default async function getAll(
       name: '<API NÃO ESTÁ ENVIANDO>',
     },
     author: {
-      id: '<API NÃO ESTÁ ENVIANDO>',
+      id: get(post, 'id_criador'),
       name: get(post, 'criador'),
       avatar: '<API NÃO ESTÁ ENVIANDO>',
     },
