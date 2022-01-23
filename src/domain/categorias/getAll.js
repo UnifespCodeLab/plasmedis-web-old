@@ -17,5 +17,6 @@ export default async function getAll(token) {
   return get(categorias, 'data.Categorias', []).map((categoria) => ({
     id: get(categoria, 'id'),
     name: get(categoria, 'nome'),
+    posts: get(categoria, 'postagens'),
   }));
 }

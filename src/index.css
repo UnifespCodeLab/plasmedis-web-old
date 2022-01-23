@@ -11,6 +11,11 @@ html, body, #root, .appContainer{
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media screen and (max-width: 350px) {
+  html, body, #root, .appContainer{
+    width: fit-content;
+  }
+}
 
 section[id*='chakra-modal-'] {
   opacity: 1 !important;

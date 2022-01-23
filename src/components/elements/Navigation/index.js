@@ -6,6 +6,7 @@ import {
   mdiAccountBoxMultipleOutline,
   mdiLogout,
   mdiAccountPlus,
+  mdiApplicationCog,
 } from '@mdi/js';
 import {Box} from '@chakra-ui/layout';
 import {useLocation} from 'react-router-dom';
@@ -42,6 +43,12 @@ const informationSection = [
     to: '/register',
     user_type_alowed: [1, 2],
   },
+  {
+    title: 'Gerenciar Categorias',
+    icon: mdiApplicationCog,
+    to: '/categorias',
+    user_type_alowed: [1, 2],
+  },
 ];
 
 const logoutSection = [
@@ -57,18 +64,8 @@ const Navigation = ({user}) => {
   const location = useLocation();
   const sidebarSections = useBreakpointValue(
     {
-      base: [
-        essentialsSection,
-        // categoriesSection,
-        informationSection,
-        logoutSection,
-      ],
-      lg: [
-        essentialsSection,
-        // categoriesSection,
-        informationSection,
-        logoutSection,
-      ],
+      base: [essentialsSection, informationSection, logoutSection],
+      lg: [essentialsSection, informationSection, logoutSection],
     },
     'base',
   );
@@ -105,7 +102,9 @@ const Navigation = ({user}) => {
 
 Navigation.displayName = 'Navigation';
 Navigation.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.shape({
+    userType: PropTypes.number,
+  }).isRequired,
 };
 
 export default Navigation;
