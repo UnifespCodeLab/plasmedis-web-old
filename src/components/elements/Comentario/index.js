@@ -8,6 +8,7 @@ import {Context as AuthContext} from '../../stores/Auth';
 import {TextAnchor} from './styles.js';
 
 const Comentario = ({item} = {}) => {
+  debugger;
   const {user} = useContext(AuthContext);
 
   const checkIfIsAbleToDelete = () => {
@@ -48,7 +49,7 @@ const Comentario = ({item} = {}) => {
 
         <TextAnchor size="sm" color="black" align="justify">
           <Anchorme target="_blank" rel="noreferrer noopener">
-            {item.description}
+            {item.body}
           </Anchorme>
         </TextAnchor>
       </Box>
