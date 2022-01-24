@@ -98,4 +98,4 @@ const UserControl = () => {
   );
 };
 
-export default UserControll;
+export default UserControl;
