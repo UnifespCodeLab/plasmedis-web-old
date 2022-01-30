@@ -40,7 +40,6 @@ const UserControl = () => {
       default:
         break;
     }
-    // await inactivateById(token, target);
   };
 
   return (
