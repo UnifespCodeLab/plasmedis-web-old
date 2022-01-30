@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useCallback} from 'react';
+/* eslint-disable no-alert */
+import React, {useState, useEffect, useCallback, useContext} from 'react';
 import PropTypes from 'prop-types';
 import {Anchorme} from 'react-anchorme';
 import {Stack, Box, Text, Flex} from '@chakra-ui/layout';
 import {Avatar} from '@chakra-ui/avatar';
-import {FiTrash} from 'react-icons/fi/';
 import {
   IconButton,
   Input,
@@ -21,11 +21,14 @@ import {MdSend, MdVerifiedUser} from 'react-icons/md';
 
 import {Button} from '@chakra-ui/button';
 import Icon from '@chakra-ui/icon';
-
 import {get} from 'lodash';
-import {TextAnchor} from './styles';
+import {deleteById} from '../../../domain/postagens';
+
+import {TextAnchor, FiTrashIcon} from './styles';
 
 import Comentario from '../Comentario';
+
+import {Context as AuthContext} from '../../stores/Auth';
 
 const Postagem = ({
   item,
@@ -36,6 +39,7 @@ const Postagem = ({
   onCreateComment,
   onAddSelo,
 } = {}) => {
+  const {token} = useContext(AuthContext);
   const [openComments, setOpenComments] = useState(false);
   const [newComment, setNewComment] = useState('');
   const [newCommentInvalid, setNewCommentInvalid] = useState(false);
@@ -78,8 +82,12 @@ const Postagem = ({
     return false;
   };
 
-  const deletePost = (idPost) => {
-    console.log(idPost);
+  const showDeleteDialog = async (userId) => {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm('Deseja realmente excluir esse post?')) {
+      await deleteById(token, userId);
+      document.location.reload(true);
+    }
   };
 
   // se comments está nulo (ainda não houve um fetch com sucesso da api)
@@ -135,7 +143,7 @@ const Postagem = ({
               </Stack>
             </Flex>
             {checkIfUserCanDeletePost() ? (
-              <FiTrash onClick={() => deletePost(item.id)} />
+              <FiTrashIcon onClick={() => showDeleteDialog(item.id)} />
             ) : null}
           </Flex>
           <Stack>
