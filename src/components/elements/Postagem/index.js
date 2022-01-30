@@ -81,10 +81,11 @@ const Postagem = ({
     return false;
   };
 
-  const showDeleteDialog = (userId) => {
+  const showDeleteDialog = async (userId) => {
     // eslint-disable-next-line no-restricted-globals
     if (confirm('Deseja realmente excluir esse post?')) {
-      deleteById(token, userId);
+      await deleteById(token, userId);
+      document.location.reload(true);
     }
   };
 
