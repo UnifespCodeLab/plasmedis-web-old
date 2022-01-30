@@ -12,7 +12,6 @@ const UserControl = () => {
 
   useEffect(() => {
     const getAllUsersFromApi = async () => {
-      debugger;
       const response = await getAll(token);
       setUsers(response.users);
     };
@@ -29,7 +28,6 @@ const UserControl = () => {
   }, []);
 
   const updateUserStatus = async (target, userId) => {
-    debugger;
     switch (target.value) {
       case 'ativar':
         await activateById(token, userId);
