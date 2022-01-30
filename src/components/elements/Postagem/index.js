@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, {useState, useEffect, useCallback, useContext} from 'react';
 import PropTypes from 'prop-types';
 import {Anchorme} from 'react-anchorme';
