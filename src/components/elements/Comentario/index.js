@@ -50,7 +50,11 @@ const Comentario = ({item} = {}) => {
                 </Text>
               </Text>
               {checkIfIsAbleToDelete() ? (
-                <FiTrash size={15} onClick={() => showDeleteDialog(item.id)} />
+                <FiTrash
+                  style={{cursor: 'pointer'}}
+                  size={15}
+                  onClick={() => showDeleteDialog(item.id)}
+                />
               ) : (
                 <></>
               )}
