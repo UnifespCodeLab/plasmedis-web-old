@@ -6,7 +6,6 @@ export default async function getById(token, userId) {
     throw new Error('Token não foi informado');
 
   try {
-    debugger;
     const response = await api.post(
       `activate_users/${userId}`,
       {},

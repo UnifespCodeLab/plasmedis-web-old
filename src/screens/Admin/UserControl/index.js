@@ -5,14 +5,13 @@ import * as S from './styles';
 import {getAll, inactivateById, activateById} from '../../../domain/usuarios';
 import {Context as AuthContext} from '../../../components/stores/Auth';
 
-const UserControll = () => {
+const UserControl = () => {
   const {user, token} = useContext(AuthContext);
   const history = useHistory();
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
     const getAllUsersFromApi = async () => {
-      debugger;
       const response = await getAll(token);
       setUsers(response.users);
     };
@@ -29,7 +28,6 @@ const UserControll = () => {
   }, []);
 
   const updateUserStatus = async (target, userId) => {
-    debugger;
     switch (target.value) {
       case 'ativar':
         await activateById(token, userId);
@@ -42,7 +40,6 @@ const UserControll = () => {
       default:
         break;
     }
-    // await inactivateById(token, target);
   };
 
   return (
@@ -98,4 +95,4 @@ const UserControll = () => {
   );
 };
 
-export default UserControll;
+export default UserControl;
