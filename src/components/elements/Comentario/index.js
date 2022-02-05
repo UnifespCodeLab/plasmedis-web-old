@@ -9,7 +9,6 @@ import {TextAnchor} from './styles.js';
 import {deleteById} from '../../../domain/comentarios';
 
 const Comentario = ({item} = {}) => {
-  debugger;
   const {user, token} = useContext(AuthContext);
   const [hideComponent, setHideComponent] = useState(false);
 
