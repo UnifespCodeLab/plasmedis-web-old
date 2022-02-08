@@ -132,7 +132,7 @@ const FormQuestions = ({
         );
       case 'radio':
         return (
-          <RadioGroup>
+          <RadioGroup defaultValue={2}>
             <Stack color="#000" spacing={4} direction="row">
               {question.alternatives
                 ? question.alternatives.map((alternative) => {
@@ -144,7 +144,7 @@ const FormQuestions = ({
                             [question.id]: event.target.value,
                           });
                         }}
-                        value={alternative.value}>
+                        value={alternative.id}>
                         {alternative.value}
                       </Radio>
                     );
