@@ -23,7 +23,7 @@ const Comentario = ({item} = {}) => {
 
         <TextAnchor size="sm" color="black" align="justify">
           <Anchorme target="_blank" rel="noreferrer noopener">
-            {item.body}
+            {item.description}
           </Anchorme>
         </TextAnchor>
       </Box>
@@ -44,7 +44,7 @@ Comentario.propTypes = {
     },
     post: PropTypes.string,
     dateTime: PropTypes.object.isRequired, // TODO: invoke moment object type
-    body: PropTypes.string,
+    description: PropTypes.string,
   }),
 };
 

@@ -47,7 +47,7 @@ export default async function (token, id) {
       },
       post: get(comentario, 'postagem'),
       dateTime: moment(`${get(comentario, 'data')}Z`),
-      body: get(comentario, 'texto'),
+      description: get(comentario, 'texto'),
     })),
   };
 }

@@ -24,6 +24,6 @@ export default async function getAll(token) {
     },
     post: get(comentario, 'postagem'),
     dateTime: moment(get(comentario, 'data')),
-    body: get(comentario, 'texto'),
+    description: get(comentario, 'texto'),
   }));
 }
