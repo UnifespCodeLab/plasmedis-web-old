@@ -44,7 +44,7 @@ Comentario.propTypes = {
     },
     post: PropTypes.string,
     dateTime: PropTypes.object.isRequired, // TODO: invoke moment object type
-    body: PropTypes.string,
+    description: PropTypes.string,
   }),
 };
 

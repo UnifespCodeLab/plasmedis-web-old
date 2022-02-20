@@ -91,6 +91,16 @@ const FormQuestions = ({
             ? decodeDate(userAdditionalData.nascimento)
             : null;
           inputValue[question.id] = dateDecoded;
+        } else if (question.nameFromApi === 'sexo') {
+          switch (userAdditionalData.sexo) {
+            case 'M':
+              inputValue[question.id] = 'Masculino';
+              break;
+            case 'F':
+              inputValue[question.id] = 'Feminino';
+            default:
+              break;
+          }
         } else {
           inputValue[question.id] = userAdditionalData[question.nameFromApi];
         }
@@ -132,7 +142,7 @@ const FormQuestions = ({
         );
       case 'radio':
         return (
-          <RadioGroup>
+          <RadioGroup defaultValue={inputValue[question.id]}>
             <Stack color="#000" spacing={4} direction="row">
               {question.alternatives
                 ? question.alternatives.map((alternative) => {
@@ -144,7 +154,8 @@ const FormQuestions = ({
                             [question.id]: event.target.value,
                           });
                         }}
-                        value={alternative.value}>
+                        value={alternative.value}
+                        selectedValue={alternative.value}>
                         {alternative.value}
                       </Radio>
                     );
