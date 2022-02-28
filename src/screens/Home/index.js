@@ -152,7 +152,10 @@ function Home() {
             color={{base: 'light.300', lg: '#333'}}
             bg={{base: 'primary.600', lg: 'transparent'}}
             maxWidth="100vw"
-            overflowX="auto">
+            overflowX="auto"
+            style={{
+              scrollbarWidth: 'thin',
+            }}>
             {tabs.map((tabName, index) => (
               <Tab
                 key={index}
